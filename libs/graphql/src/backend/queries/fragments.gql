@@ -1,0 +1,117 @@
+fragment CalendarEventPart on GraphqlCalendarEvent {
+  calendarEventId
+  metadataId
+  metadataTitle
+  metadataLot
+  metadataImage
+  date
+  showSeasonNumber
+  showEpisodeNumber
+  podcastEpisodeNumber
+}
+
+fragment SeenPart on Seen {
+  id
+  progress
+  state
+  startedOn
+  finishedOn
+  lastUpdatedOn
+  numTimesUpdated
+  showInformation {
+    episode
+    season
+  }
+  podcastInformation {
+    episode
+  }
+}
+
+fragment MediaSearchItemPart on MediaSearchItem {
+  identifier
+  title
+  image
+  publishYear
+}
+
+fragment PartialMetadataPart on PartialMetadata {
+  id
+  lot
+  source
+  identifier
+  title
+  image
+}
+
+fragment WorkoutOrExerciseTotalsPart on WorkoutOrExerciseTotals {
+  personalBestsAchieved
+  weight
+  reps
+  distance
+  duration
+  restTime
+}
+
+fragment EntityAssetsPart on EntityAssets {
+  images
+  videos
+}
+
+fragment WorkoutSetStatisticPart on WorkoutSetStatistic {
+  duration
+  distance
+  reps
+  weight
+  oneRm
+  pace
+  volume
+}
+
+fragment WorkoutSummaryPart on WorkoutSummary {
+  total {
+    ...WorkoutOrExerciseTotalsPart
+  }
+  exercises {
+    numSets
+    id
+    lot
+    bestSet {
+      statistic {
+        ...WorkoutSetStatisticPart
+      }
+      lot
+      personalBests
+    }
+  }
+}
+
+fragment CollectionPart on Collection {
+  id
+  name
+}
+
+fragment ReviewItemPart on ReviewItem {
+  id
+  rating
+  text
+  spoiler
+  visibility
+  showSeason
+  showEpisode
+  podcastEpisode
+  postedOn
+  postedBy {
+    id
+    name
+  }
+  comments {
+    id
+    text
+    createdOn
+    user {
+      id
+      name
+    }
+    likedBy
+  }
+}
